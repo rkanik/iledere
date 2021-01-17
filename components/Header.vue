@@ -48,7 +48,7 @@ export default {
     return {
       navs: [
         { name: 'Bon Plan', path: '/bon-plan' },
-        { name: 'Explorer L\'ile', path: '/explorer-lile' },
+        { name: 'Explorer L\'ile', path: '/explore' },
         { name: 'Se Loger', path: '/se-loger' },
         { name: 'Que faire sur l\'ile', path: '/que-faire-sur' },
         { name: 'Savoure', path: '/savoure' },
