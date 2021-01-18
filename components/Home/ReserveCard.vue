@@ -1,48 +1,48 @@
 <template>
-  <vs-card class="rescard">
-    <template #title>
+  <NuxtLink :to="restaurantPath">
+    <vs-card actionable class="rescard">
+      <div slot="media">
+        <img :src="thumbnail" alt="Restaurant Image">
+      </div>
       <h3 class="rescard__title">
         {{ name }}
       </h3>
-    </template>
-    <template #img>
-      <img :src="thumbnail" alt="Restaurant Image">
-    </template>
-    <template #text>
-      <p class="rescard__location">
-        <map-pin-icon class="rescard__location-icon" />
-        <span class="rescard__location-text">{{ location }}</span>
-        <span class="rescard__location-dot" />
-      </p>
-      <div v-if="type === 'appartment'" class="rescard__specs">
-        <div class="rescard__spec">
-          <i class="bx bx-bed" />
-          <p> {{ bedroom }} </p>
+      <div>
+        <p class="rescard__location">
+          <map-pin-icon class="rescard__location-icon" />
+          <span class="rescard__location-text">{{ location }}</span>
+          <span class="rescard__location-dot" />
+        </p>
+        <div v-if="type === 'appartment'" class="rescard__specs">
+          <div class="rescard__spec">
+            <i class="bx bx-bed" />
+            <p> {{ bedroom }} </p>
+          </div>
+          <div class="rescard__spec">
+            <i class="bx bx-bath" />
+            <p> {{ bathroom }} </p>
+          </div>
+          <div class="rescard__spec">
+            <i class="bx bx-dollar" />
+            <p> {{ cost }} </p>
+          </div>
         </div>
-        <div class="rescard__spec">
-          <i class="bx bx-bath" />
-          <p> {{ bathroom }} </p>
+        <div v-else-if="type === 'restaurant'" class="rescard__specs">
+          <div class="rescard__spec">
+            <i class="bx bx-bed" />
+            <p>Française</p>
+          </div>
+          <div class="rescard__spec">
+            <i class="bx bx-bath" />
+            <p>Déjeuner, Dîner</p>
+          </div>
         </div>
-        <div class="rescard__spec">
-          <i class="bx bx-dollar" />
-          <p> {{ cost }} </p>
-        </div>
+        <vs-button size="large" class="c-button rescard__reserve">
+          Réserver
+        </vs-button>
       </div>
-      <div v-else-if="type === 'restaurant'" class="rescard__specs">
-        <div class="rescard__spec">
-          <i class="bx bx-bed" />
-          <p>Française</p>
-        </div>
-        <div class="rescard__spec">
-          <i class="bx bx-bath" />
-          <p>Déjeuner, Dîner</p>
-        </div>
-      </div>
-      <vs-button size="xl" class="c-button rescard__reserve">
-        Réserver
-      </vs-button>
-    </template>
-  </vs-card>
+    </vs-card>
+  </NuxtLink>
 </template>
 
 <script>
@@ -81,6 +81,11 @@ export default {
       type: [Number, String],
       default: 0
     }
+  },
+  computed: {
+    restaurantPath () {
+      return `/restaurants/${this.name.toLowerCase().split(' ').join('-')}`
+    }
   }
 
 }
@@ -88,19 +93,36 @@ export default {
 
 <style lang='scss'>
   .rescard {
+    max-width: 354px;
+    &.con-vs-card {
+      box-shadow: none;
+      border-radius: 20px 0;
+      overflow: hidden;
+    }
+    .vs-card--content {
+      margin-bottom: 0;
+      font-size: unset;
+      border: 1px solid #E5E5E5;
+      border-bottom-right-radius: 20px;
+      padding: 20px;
+    }
     &__title {
-      @include font(22px, 25px, #112884, bold)
+      @include font(22px, 25px, #112884, bold);
+      margin-bottom: 16px;
     }
     &__location {
       display: flex;
     }
     &__location-text {
-      max-width: 158px;
+      max-width: 126px;
+      @include font(14px, 16px,#7E8989)
     }
     &__location-icon {
       height: 13px;
       width: 10.64px;
-      margin-right: 4px
+      margin-right: 4px;
+      color: #7E8989;
+      margin-top: 1px
     }
     &__location-dot {
       @include circle(9px);
@@ -134,31 +156,13 @@ export default {
         margin-right: 12px;
       }
       p {
-        @include font(18px, 20px, #112884, 500)
+        @include font(17px, 20px, #112884, 500)
       }
     }
 
-    &__reserve {
+    &__reserve.vs-button-primary{
       width: 100%;
-      background-color: #3B96D2;
-    }
-
-    .vs-card {
-      box-shadow: none;
-      border-radius: 20px 0;
-      border: 1px solid #E5E5E5;
-      overflow: hidden;
-    }
-    .vs-card__title {
-      padding: 16px 0;
-    }
-    .vs-card__text {
-      padding: 0 20px;
-      padding-bottom: 20px;
-    }
-    .vs-card__img,
-    .vs-card__img img {
-      border-radius: 0 !important;
+      background-color: #3B96D2 !important;
     }
   }
 </style>

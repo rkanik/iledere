@@ -1,44 +1,46 @@
 <template>
-  <div class="container">
-    <header class="header">
-      <div class="header__left">
-        <NuxtLink to="/" class="header__brand-logo">
-          <img src="../assets/images/logo.png" alt="Brand Logo">
-          <div class="header__brand-name">
-            île de ré
-          </div>
-        </NuxtLink>
-        <nav class="header__nav">
-          <NuxtLink
-            v-for="(nav, navIndex) in navs"
-            :key="navIndex"
-            :to="nav.path"
-            class="header__nav-link"
-          >
-            {{ nav.name }}
+  <header class="header">
+    <div class="container">
+      <div class="header__flex">
+        <div class="header__left">
+          <NuxtLink to="/" class="header__brand-logo">
+            <img src="../assets/images/logo.png" alt="Brand Logo">
+            <div class="header__brand-name">
+              île de ré
+            </div>
           </NuxtLink>
-        </nav>
-      </div>
-      <div class="header__actions">
-        <div class="header__search">
-          <i class="bx bx-search" />
+          <nav class="header__nav">
+            <NuxtLink
+              v-for="(nav, navIndex) in navs"
+              :key="navIndex"
+              :to="nav.path"
+              class="header__nav-link"
+            >
+              {{ nav.name }}
+            </NuxtLink>
+          </nav>
         </div>
-        <div class="header__lang">
-          <i class="bx bx-globe" />
-          <span>Fr</span>
+        <div class="header__actions">
+          <div class="header__search">
+            <i class="bx bx-search" />
+          </div>
+          <div class="header__lang">
+            <i class="bx bx-globe" />
+            <span>Fr</span>
+          </div>
+          <NuxtLink to="#" class="header__establish">
+            Ajouter établissement
+          </NuxtLink>
+          <vs-button size="large" class="c-button header__register">
+            S'inscrire
+          </vs-button>
+          <vs-button type="border" size="large" class="c-button header__login">
+            Se connecter
+          </vs-button>
         </div>
-        <NuxtLink to="#" class="header__establish">
-          Ajouter établissement
-        </NuxtLink>
-        <vs-button size="xl" class="c-button header__register">
-          S'inscrire
-        </vs-button>
-        <vs-button border size="xl" class="c-button  header__login">
-          Se connecter
-        </vs-button>
       </div>
-    </header>
-  </div>
+    </div>
+  </header>
 </template>
 
 <script>
@@ -61,13 +63,17 @@ export default {
 
 <style lang='scss'>
   .header {
+    z-index: 10;
     padding: 6px 0;
-    justify-content: space-between;
-    &, &__left {
+    position: relative;
+    box-shadow: 0 6px 12px rgba(#3454D1, 0.14);
+    &__flex, &__left {
       display: flex;
       align-items: center;
     }
-
+    &__flex {
+      justify-content: space-between;
+    }
     &__brand-logo {
       display: flex;
       align-items: center;
@@ -117,14 +123,12 @@ export default {
     &__establish {
       @include font(16px, 18px, #3B96D2)
     }
-    &__register {
-      background-color: #3B96D2;
+    &__register.vs-button-primary {
+      background-color: #3B96D2 !important;
     }
-    &__login {
-      color: #3B96D2;
-      &::before{
-        border-color: #3B96D2;
-      }
+    &__login.vs-button-primary {
+      color: #3B96D2 !important;
+      border-color: #3B96D2 !important;
     }
 
   }

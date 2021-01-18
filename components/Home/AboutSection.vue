@@ -1,13 +1,8 @@
 <template>
   <div class="about">
     <div class="container">
-      <vs-row>
-        <vs-col
-          vs-type="flex"
-          vs-justify="center"
-          vs-align="center"
-          w="7"
-        >
+      <vs-row vs-w="12" vs-justify="center" vs-align="center">
+        <vs-col vs-w="7">
           <div class="about__divider" />
           <h2 class="about__title">
             The domn ohickey Company was founded in this stpey
@@ -19,16 +14,11 @@
             Le long des dix villages, partez à la découverte du patrimoine, des ports et de la riche histoire insulaire. Le littoral présente des aspects très différents : dunes, petites falaises, rochers, longues plages de sable fin ...
           </p>
 
-          <vs-button size="xl" class="c-button savoir-button">
+          <vs-button size="large" class="c-button savoir-button">
             En savoir plus
           </vs-button>
         </vs-col>
-        <vs-col
-          vs-type="flex"
-          vs-justify="center"
-          vs-align="center"
-          w="5"
-        >
+        <vs-col vs-w="5">
           <div class="about__image">
             <img src="../../assets/images/about.png">
           </div>
@@ -67,6 +57,7 @@ export default {
       margin-top: 97px;
       border-radius: 20px 0;
       background-color: #F6F8FD;
+      margin-left: auto;
       img {
         transform: translate(-83px, 85px);
         transition: transform 300ms ease-in-out;
@@ -75,8 +66,8 @@ export default {
         }
       }
     }
-    .savoir-button {
-      background-color: #3B96D2;
+    .savoir-button.vs-button-primary {
+      background-color: #3B96D2 !important;
     }
   }
 </style>

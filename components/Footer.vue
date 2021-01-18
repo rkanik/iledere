@@ -3,7 +3,7 @@
     <div class="container">
       <div class="footer__top">
         <vs-row>
-          <vs-col w="3">
+          <vs-col vs-w="3">
             <h4 class="footer__title">
               île de ré
             </h4>
@@ -25,7 +25,7 @@
               </NuxtLink>
             </div>
           </vs-col>
-          <vs-col w="3">
+          <vs-col vs-w="3">
             <h4 class="footer__title">
               Communauté
             </h4>
@@ -47,7 +47,7 @@
               </NuxtLink>
             </div>
           </vs-col>
-          <vs-col w="3">
+          <vs-col vs-w="3">
             <h4 class="footer__title">
               Contact
             </h4>
@@ -63,7 +63,7 @@
               </p>
             </div>
           </vs-col>
-          <vs-col w="3">
+          <vs-col vs-w="3">
             <NuxtLink to="/" class="footer__brand-logo">
               <div>
                 <img src="../assets/images/logo.png" alt="Brand Logo">
@@ -188,21 +188,28 @@ export default {
     }
     &__newsletter-form {
       display: flex;
-      .vs-input {
-        height: 71px;
+      .vs-input--input {
         width: 100%;
         border-radius: 8px 0;
         @include font(16px, 18px, #223263);
+      }
+      .vs-con-input,
+      .vs-input--input {
+        height: 100% ;
+      }
+      .vs-input--placeholder {
+        top: unset;
+        @include font(16px, 18px, rgba(#223263, 0.3));
       }
     }
     &__newsletter-input {
       margin-right: 26px;
       flex: 1;
     }
-    &__newsletter-button {
+    &__newsletter-button.vs-button-primary {
       height: 71px;
       width: 71px;
-      background-color: #3B96D2;
+      background-color: #3B96D2 !important;
       border-radius: 8px 0;
       i {
         font-size: 21px;
