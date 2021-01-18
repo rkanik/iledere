@@ -1,18 +1,18 @@
 <template>
   <div class="explore">
-    <h4>This is explore component</h4>
+    <h1>this is explore page</h1>
+    <ImageSection />
   </div>
 </template>
 
 <script>
+import ImageSection from '@/components/Explore/ImageSection'
 export default {
-  name: 'Explore'
-
+  components: {
+    ImageSection
+  }
 }
 </script>
-
 <style lang='scss' scoped>
-  .explore{
-
-  }
+  .explore {}
 </style>
