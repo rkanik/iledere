@@ -21,6 +21,7 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     'vuesax/dist/vuesax.css',
+    'material-icons/iconfont/material-icons.css',
     'boxicons/css/boxicons.min.css',
     '~assets/scss/index.scss'
   ],

@@ -2,14 +2,15 @@
   <div class="restaurant py-5">
     <div class="container">
       <SectionHeader class="restaurant__header" title="Top Restaurants" count="200+" />
-      <vs-row class="restaurant__cards">
+      <vs-row
+        vs-justify="center"
+        vs-align="center"
+        class="restaurant__cards"
+      >
         <vs-col
           v-for="(res, index) in restaurants"
           :key="index"
-          w="3"
-          vs-type="flex"
-          vs-justify="center"
-          vs-align="center"
+          vs-w="3"
         >
           <ReserveCard v-bind="res" type="restaurant" />
         </vs-col>

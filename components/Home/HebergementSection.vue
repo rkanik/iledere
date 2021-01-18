@@ -6,10 +6,7 @@
         <vs-col
           v-for="(res, index) in restaurants"
           :key="index"
-          w="3"
-          vs-type="flex"
-          vs-justify="center"
-          vs-align="center"
+          vs-w="3"
         >
           <ReserveCard v-bind="res" />
         </vs-col>

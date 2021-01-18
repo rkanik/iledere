@@ -18,8 +18,8 @@
 
     <div class="container">
       <div class="mobapp">
-        <vs-row align="center" justify="space-between">
-          <vs-col w="6">
+        <vs-row vs-w="12" vs-align="center" vs-justify="space-between">
+          <vs-col vs-w="6">
             <div class="mobapp__subheader">
               APPLICATION MOBILE
             </div>
@@ -41,7 +41,7 @@
               <img src="../assets/images/googleplay.png" class="mobapp__link-image">
             </div>
           </vs-col>
-          <vs-col w="4">
+          <vs-col vs-w="4">
             <div class="mobapp__image">
               <img src="../assets/images/home-phone.png">
             </div>
