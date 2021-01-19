@@ -17,6 +17,11 @@
   border-radius: 50%;
 }
 
+@mixin rect($size: 1rem){
+  height: $size;
+  width: $size;
+}
+
 // Responsive Mixins
 $breakpoints-down: (
 	"mobile": 600px,

@@ -57,7 +57,7 @@
                       <vs-button radius type="flat" icon="reply" />
                     </vs-tooltip>
                     <vs-tooltip text="Favorite">
-                      <vs-button radius type="flat" icon="favorite" />
+                      <vs-button radius type="flat" color="danger" icon="favorite" />
                     </vs-tooltip>
                     <vs-tooltip text="More">
                       <vs-button radius type="flat" icon="more_horiz" />
@@ -69,28 +69,58 @@
           </div>
         </vs-col>
         <vs-col vs-w="4">
-          Card
+          <div class="res__card">
+            <div class="res__card-header">
+              <div class="res__card-thumb">
+                <img src="../../assets/images/res-thumb.png">
+              </div>
+              <div class="res__card-desc">
+                <h5 class="res__card-header-title">
+                  Patrick Léo
+                </h5>
+                <p class="flex align-center">
+                  <i class="res__card-star bx bxs-star" />
+                  <strong class="res__card-rating">4.79</strong>
+                  <span class="res__card-comment">(95 Commentaires)</span>
+                </p>
+              </div>
+            </div>
+            <hr class="res__card-divider">
+            <div class="res__card-form">
+              <vs-input icon-no-border icon="today" label="Dates" value="01/10/20 -> 12:00" />
+              <vs-select
+                label="Figuras"
+                class="selectExample"
+                placeholder="4 Invites"
+              >
+                <vs-select-item value="1" text="4 Invites" />
+              </vs-select>
+              <vs-button color="primary" type="filled" size="large" class="c-button w-100">
+                Reserver
+              </vs-button>
+            </div>
+          </div>
         </vs-col>
       </vs-row>
       <vs-row>
         <vs-col vs-w="2">
           <div class="res__iconbar">
-            <vs-button radius type="filled">
+            <vs-button radius size="large" type="flat">
               <i class="vs-icon icon-scale vs-button--icon bx bxs-offer" />
             </vs-button>
-            <vs-button radius type="filled">
+            <vs-button radius size="large" type="flat" class="isActive">
               <i class="vs-icon icon-scale vs-button--icon bx bx-info-circle" />
             </vs-button>
-            <vs-button radius type="filled">
+            <vs-button radius size="large" type="flat">
               <i class="vs-icon icon-scale vs-button--icon bx bx-calendar" />
             </vs-button>
-            <vs-button radius type="filled">
+            <vs-button radius size="large" type="flat">
               <i class="vs-icon icon-scale vs-button--icon bx bx-wallet" />
             </vs-button>
-            <vs-button radius type="filled">
+            <vs-button radius size="large" type="flat">
               <i class="vs-icon icon-scale vs-button--icon bx bx-door-open" />
             </vs-button>
-            <vs-button radius type="filled">
+            <vs-button radius size="large" type="flat">
               <i class="vs-icon icon-scale vs-button--icon bx bx-star" />
             </vs-button>
           </div>
@@ -99,33 +129,33 @@
           <div class="res__desc">
             <hr class="res__desc-divider">
             <vs-row>
-              <vs-col vs-w="3">
+              <vs-col vs-w="4">
                 <div class="res__desc-subheader">
                   Cuisine
                 </div>
-                <div class="res__desc-text">
+                <div class="res__desc-text hm">
                   Française
                 </div>
               </vs-col>
-              <vs-col vs-w="3">
+              <vs-col vs-w="4">
                 <div class="res__desc-subheader">
                   Capacité
                 </div>
-                <div class="res__desc-text">
+                <div class="res__desc-text hm">
                   Capacité
                 </div>
               </vs-col>
-              <vs-col vs-w="6">
+              <vs-col vs-w="4">
                 <div class="res__desc-subheader">
                   Salles
                 </div>
-                <div class="res__desc-text">
+                <div class="res__desc-text hm">
                   1
                 </div>
               </vs-col>
             </vs-row>
             <vs-row>
-              <vs-col vs-w="3">
+              <vs-col vs-w="4">
                 <div class="res__desc-subheader">
                   Repas
                 </div>
@@ -133,7 +163,7 @@
                   Déjeuner, Dîner
                 </div>
               </vs-col>
-              <vs-col vs-w="3">
+              <vs-col vs-w="4">
                 <div class="res__desc-subheader">
                   Equipements
                 </div>
@@ -141,7 +171,7 @@
                   Terrasse
                 </div>
               </vs-col>
-              <vs-col vs-w="6">
+              <vs-col vs-w="4">
                 <div class="res__desc-subheader">
                   Taux d'occupation
                 </div>
@@ -199,13 +229,18 @@
       </vs-row>
     </div>
     <div class="res__map">
-      <!-- <iframe
+      <iframe
         frameborder="0"
         style="border:0"
         allowfullscreen
         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA-10-OHpfss9XvUDWILmos62MnG_L4MYw
           &q=Space+Needle,Seattle+WA"
-      /> -->
+      />
+      <div class="res__map-expander relative circle">
+        <div class="center">
+          <i class="bx bx-chevrons-left" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -272,14 +307,34 @@ export default {
         padding: 0;
       }
     }
+
+    // Start Map
     &__map {
       width: 392px;
       height: 100vh;
+      position: relative;
       iframe {
         width: 100%;
         height: 100%;
+        min-height: 1000px;
       }
     }
+    &__map-expander {
+      cursor: pointer;
+      position: absolute;
+      left: -35px; top: 70%;
+      transform: translateY(-50%);
+      @include rect(71px);
+      border: 1px solid #D8E6DB;
+      background-color: white;
+      box-shadow: 0 3px 6px rgba(#000000, 0.016);
+      i {
+        font-size: 28px;
+        color: #C4C4C4;
+      }
+    }
+    // End Map
+
     &__images {
       flex-direction: column;
       &.has-margin {
@@ -336,6 +391,7 @@ export default {
       @include font(35px, 40px, #223263, bold);
     }
     &__subtitle {
+      margin-bottom: 48px;
       @include font(16px, 18px, #7E8989, 500);
     }
     &__header-icons {
@@ -345,6 +401,142 @@ export default {
       }
     }
     // End Header
+
+    // Start Desc
+
+    &__desc-divider {
+      border: none;
+      height: 1px;
+      background-color: #E8EBE9;
+      margin-bottom: 48px;
+    }
+
+    &__desc-subheader {
+      margin-bottom: 8px;
+      @include font(16px, 18px, #7E8989)
+    }
+
+    &__desc-text {
+      margin-bottom: 28px;
+      @include font(20px, 22px, #223263, 600);
+    }
+    &__desc-title {
+      margin-bottom: 27px;
+      @include font(24px, 27px, #223263, 600)
+    }
+    &__desc-desc {
+      margin-bottom: 44px;
+      @include font(14px, 25px,#7E8989)
+    }
+    // End Desc
+
+    // Start Desc Contact
+
+    &__desc-contact {
+      margin-left: 24px;
+      margin-top: 44px;
+      h6 {
+        margin-bottom: 12px;
+        @include font(19px, 30px,#223263, 700)
+      }
+      i {
+        color: #7E8989;
+        font-size: 16px;
+      }
+      p {
+        margin-bottom: 24px;
+        @include font(16px, 18px,#7E8989)
+      }
+    }
+    // End Desc Contact
+
+    // Start IconBar
+    &__iconbar {
+      padding: 16px;
+      display: flex;
+      width: max-content;
+      border-radius: 44px;
+      flex-direction: column;
+      background-color: #F2F5F3;
+      button:not(:last-child) {
+        margin-bottom: 12px;
+      }
+      button {
+        width: 44px;
+        height: 44px;
+      }
+      button.isActive {
+        background-color: #3B96D2 !important;
+      }
+      .vs-icon {
+        color: #7E8989;
+        font-size: 20px;
+      }
+    }
+    // End Start IconBar
+
+    // Start Res Card
+    &__card {
+      width: 398px;
+      padding: 30px;
+      margin: 0 auto;
+      border: 1px solid #D8E6DB;
+      border-radius: 12px;
+    }
+    &__card-header {
+      display: flex;
+      align-items: center;
+    }
+    &__card-thumb {
+      @include rect(54px);
+      margin-right: 10px;
+    }
+    &__card-header-title {
+      // margin-bottom: 12px;
+      @include font(19px, 34px, #484848, 500)
+    }
+    &__card-star {
+      color: #FFC701;
+    }
+    &__card-rating {
+      @include font(14px, 28px, #484848)
+    }
+    &__card-star,
+    &__card-rating {
+      margin-right: 4px;
+    }
+    &__card-comment {
+      @include font(14px, 28px, #767676)
+    }
+    &__card-divider {
+      margin: 16px 0;
+    }
+    &__card-form {
+      .vs-con-input-label,
+      .con-select {
+        width: 100%;
+        margin-bottom: 22px;
+      }
+      .vs-input {
+        margin-bottom: 14px;
+      }
+      .vs-input--input,
+      .vs-select--input {
+        height: 48px;
+        border-color: #D8E6DB !important;
+        @include font(18px, 38px, #484848)
+      }
+      .vs-input--icon {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .vs-select--label,
+      .vs-input--label {
+        @include font(12px, 24px, #484848)
+      }
+    }
+    // End Res Card
+
     .vs-image--img {
       background-position: center;
       background-size: cover;
