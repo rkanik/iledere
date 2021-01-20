@@ -11,10 +11,15 @@
           v-for="(res, index) in restaurants"
           :key="index"
           vs-w="3"
+          vs-xs='12'
         >
           <ReserveCard v-bind="res" type="restaurant" />
         </vs-col>
       </vs-row>
+      <div class="sechead__more von-mobile">
+				Voir plus
+				<i class="bx bx-arrow-back" />
+			</div>
     </div>
   </div>
 </template>
@@ -57,11 +62,17 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
   .restaurant {
     padding-top: 146px;
+    @include on('mobile') {
+      padding: 16px 0;
+    }
     &__header {
       margin-bottom: 58px;
+      @include on('mobile') {
+        margin-bottom: 16px;
+      }
     }
   }
 </style>
